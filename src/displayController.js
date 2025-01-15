@@ -15,36 +15,63 @@ export function renderTasks(tasks){
                 <p>${task.description}</p>
                 <p><strong>Due: </strong>${task.dueDate}</p>
                 <p><strong>Priority: </strong>${task.priority}</p>
+                <button class="delete-btn">Delete Task</button>
             `;
             taskGrid.appendChild(card);
         })
     }
 }
 
-export function showAddModal(){
-    const taskModal = document.querySelector(".add-task-modal");
+
+export function showAddModal() {
+    const taskModal = document.querySelector('.add-task-modal');
+    
+    if (!taskModal) {
+        console.error('Modal element not found');
+        return;
+    }
 
     taskModal.classList.toggle("hidden");
 
-    document.getElementById("submit").addEventListener("click", (event) => {
-        event.preventDefault(); 
+    // Remove any existing event listener to prevent duplicates
+    const submitButton = document.getElementById("submit");
+    if (!submitButton) {
+        console.error('Submit button not found');
+        return;
+    }
 
+    // Remove old event listener
+    submitButton.replaceWith(submitButton.cloneNode(true));
+    
+    // Add new event listener
+    document.getElementById("submit").addEventListener("click", (event) => {
+        event.preventDefault();
+
+        const titleInput = document.querySelector("input[name='title']");
+        const descriptionInput = document.getElementById("description");
+        const dueDateInput = document.querySelector("input[name='due-date']");
+        const priorityInput = document.querySelector("select[name='priority-level']");
+
+        if (!titleInput || !descriptionInput || !dueDateInput || !priorityInput) {
+            console.error('One or more form elements not found');
+            return;
+        }
 
         const taskData = {
-            title: document.querySelector("input[name='title']").value,
-            description: document.getElementById("description").value,
-            dueDate: document.querySelector("input[name='due-date']").value,
-            priority: document.querySelector("select[name='priority-level']").value,
+            title: titleInput.value,
+            description: descriptionInput.value,
+            dueDate: dueDateInput.value,
+            priority: priorityInput.value,
         };
-
 
         if (addTask(taskData)) {
             taskModal.classList.toggle("hidden");
 
-            document.querySelector("input[name='title']").value = "";
-            document.getElementById("description").value = "";
-            document.querySelector("input[name='due-date']").value = "";
-            document.querySelector("select[name='priority-level']").value = "";
+            // Reset form
+            titleInput.value = "";
+            descriptionInput.value = "";
+            dueDateInput.value = "";
+            priorityInput.value = "";
         }
     });
 }

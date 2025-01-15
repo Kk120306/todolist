@@ -1,16 +1,25 @@
-import { showOverdueTasks, showTodaysTasks, showAllTasks, addTask } from './taskManager.js';
-import { showAddModal } from './displayController.js'
+import { showOverdueTasks, showTodaysTasks, showAllTasks } from './taskManager.js';
+import { showAddModal } from './displayController.js';
+import './styles.css';
 
-import "./styles.css";
-
-// Initialize the app
 document.addEventListener("DOMContentLoaded", () => {
-    // Button event listeners to filter tasks
-    document.querySelector('.add-task').addEventListener('click', showAddModal);
-    document.querySelector('.show-overdue').addEventListener('click', showOverdueTasks);
-    document.querySelector('.show-today').addEventListener('click', showTodaysTasks);
-    document.querySelector('.show-all').addEventListener('click', showAllTasks);
+    const overdueButton = document.querySelector('.show-overdue');
+    const todayButton = document.querySelector('.show-today');
+    const allButton = document.querySelector('.show-all');
+    const addTaskButton = document.querySelector('.add-task');
+
+    if (overdueButton) {
+        overdueButton.addEventListener('click', showOverdueTasks);
+    }
+    if (todayButton) {
+        todayButton.addEventListener('click', showTodaysTasks);
+    }
+    if (allButton) {
+        allButton.addEventListener('click', showAllTasks);
+    }
+    if (addTaskButton) {
+        addTaskButton.addEventListener('click', showAddModal);
+    }
 
     showAllTasks();
 });
-

@@ -28,31 +28,45 @@
             </div>
         </div>
         <div class="task-grid">
-            <div class="add-task-modal hidden">
-                <form class="form-container">
-                    <div class="modal header">Add a new task</div>
+            
+        </div>
+        <div class="add-task-modal hidden">
+            <form class="form-container">
+                <div class="modal-header">Add a new task</div>
+        
+                <label for="title"><b>Title</b></label>
+                <input type="text" placeholder="Enter Title" name="title" required>
+        
+                <label for="description"><b>Description</b></label>
+                <textarea id="description" rows="5" cols="50" placeholder="Enter the task description here..." required></textarea>
+        
+                <label for="due-date"><b>Due Date:</b></label>
+                <input type="date" placeholder="DD-MM-YYYY" name="due-date" required>
+        
+                <label for="priority-level"><b>Priority</b></label>
+                <select id="priority-level" name="priority-level" required>
+                    <option value="" disabled selected>Select a priority</option>
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="urgent">Urgent</option>
+                </select>
 
-                    <label for="title"><b>Title</b></label>
-                    <input type="text" placeholder="Enter Title" name="title" required>
-
-                    <label for="description"><b>Description</b></label>
-                    <textarea id="description" rows="5" cols="50" placeholder="Enter the task description here..." required></textarea>
-
-                    <label for="due-date"><b>Due Date:</b></label>
-                    <input type="date" placeholder="DD-MM-YYYY" name="due-date" required>
-
-                    <label for="priority"><b>Priority</b></label>
-                    <select id="priority-level" name="priority-level" required>
-                        <option value="" disabled selected>Select a priority</option>
-                        <option value="low">Low</option>
-                        <option value="medium">Medium</option>
-                        <option value="urgent">Urgent</option>
-                    </select>
-                    
-                    
-                    <input type="submit" id="submit">
-                </form>
-            </div>
+                <label for="category">Category:</label>
+                <select id="category" name="category">
+                    <option value="">--Select a category--</option>
+                    <option value="Work">Work</option>
+                    <option value="Personal">Personal</option>
+                    <option value="Hobby">Hobby</option>
+                    <option value="Other">Other</option>
+                </select>
+            
+                <div id="new-category-input" class="hidden">
+                    <label for="new-category">New Category:</label>
+                    <input type="text" id="new-category" name="new-category" placeholder="Enter new category">
+                </div>
+                
+                <button type="submit" id="submit">Add Task</button>
+            </form>
         </div>
     </div>
 </body>

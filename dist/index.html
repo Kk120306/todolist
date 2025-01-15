@@ -1,1 +1,59 @@
-<head><script defer src="main.js"></script></head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script defer src="main.js"></script></head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo">
+                <img src="e764b80d717e67d92828.png" alt="logo">
+                <h2>Menu</h2>
+            </div>
+            <div class="task-sidebar">
+                <h3>Tasks <button class="add-task">Add Task</button></h3>
+                <a class="show-all"><i class="fa fa-calendar-plus-o"></i> All</a>
+                <a class="show-today"><i class="fa fa-calendar-check-o"></i> Today</a>
+                <a class="show-overdue"><i class="fa fa-calendar-times-o"></i> Overdue</a>
+            </div>
+
+            <div class="category-sidebar">
+                <h3>Categories</h3>
+                <a><i class="fa fa-fw fa-folder"></i> General</a>
+                <!-- dynamically changes here as more projects are added to DOM -->
+
+            </div>
+        </div>
+        <div class="task-grid">
+            <div class="add-task-modal hidden">
+                <form class="form-container">
+                    <div class="modal header">Add a new task</div>
+
+                    <label for="title"><b>Title</b></label>
+                    <input type="text" placeholder="Enter Title" name="title" required>
+
+                    <label for="description"><b>Description</b></label>
+                    <textarea id="description" rows="5" cols="50" placeholder="Enter the task description here..." required></textarea>
+
+                    <label for="due-date"><b>Due Date:</b></label>
+                    <input type="date" placeholder="DD-MM-YYYY" name="due-date" required>
+
+                    <label for="priority"><b>Priority</b></label>
+                    <select id="priority-level" name="priority-level" required>
+                        <option value="" disabled selected>Select a priority</option>
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="urgent">Urgent</option>
+                    </select>
+                    
+                    
+                    <input type="submit" id="submit">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
